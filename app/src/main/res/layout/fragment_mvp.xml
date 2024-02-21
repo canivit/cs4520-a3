@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".mvp.MVPFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.MVPFragment"
-    android:background="@color/mvp_background">
+    android:background="@color/mvp_background"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/first_number_input"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/enter_number_1"
+        android:autofillHints="number"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/second_number_input"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/enter_number_2"
+        android:autofillHints="number"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/result_label"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        />
+    <Button
+        android:id="@+id/subtract_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtract"/>
+    <Button
+        android:id="@+id/multiply_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/multiply"/>
+    <Button
+        android:id="@+id/divide_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/divide"/>
 
-</FrameLayout>
+</LinearLayout>

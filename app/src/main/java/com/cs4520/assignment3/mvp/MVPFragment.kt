@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
 import com.cs4520.assignment3.databinding.FragmentMvpBinding
 
 class MVPFragment : Fragment(), Contract.View {
@@ -23,28 +22,34 @@ class MVPFragment : Fragment(), Contract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         presenter = Presenter(this)
-        binding.firstNumberInput.doAfterTextChanged { text ->
-            try {
-                presenter.firstNumberChanged(
-                    text.toString().toDouble()
-                )
-            } catch (ignored: NumberFormatException) {
-            }
+
+        binding.addButton.setOnClickListener {
+            presenter.onAddClick(
+                binding.firstNumberInput.text.toString(),
+                binding.secondNumberInput.text.toString()
+            )
         }
 
-        binding.secondNumberInput.doAfterTextChanged { text ->
-            try {
-                presenter.secondNumberChanged(
-                    text.toString().toDouble()
-                )
-            } catch (ignored: NumberFormatException) {
-            }
+        binding.subtractButton.setOnClickListener {
+            presenter.onSubtractClick(
+                binding.firstNumberInput.text.toString(),
+                binding.secondNumberInput.text.toString()
+            )
         }
 
-        binding.addButton.setOnClickListener { presenter.onAddClick() }
-        binding.subtractButton.setOnClickListener { presenter.onSubtractClick() }
-        binding.multiplyButton.setOnClickListener { presenter.onMultiplyClick() }
-        binding.divideButton.setOnClickListener { presenter.onDivideClick() }
+        binding.multiplyButton.setOnClickListener {
+            presenter.onMultiplyClick(
+                binding.firstNumberInput.text.toString(),
+                binding.secondNumberInput.text.toString()
+            )
+        }
+
+        binding.divideButton.setOnClickListener {
+            presenter.onDivideClick(
+                binding.firstNumberInput.text.toString(),
+                binding.secondNumberInput.text.toString()
+            )
+        }
     }
 
     override fun showResult(result: Double) {

@@ -1,17 +1,13 @@
 package com.cs4520.assignment3.mvp
 
+import com.cs4520.assignment3.common.Result
+
 interface Contract {
     interface Model {
-        fun setFirstNumber(value: Double)
-        fun setSecondNumber(value: Double)
-        fun add(): ModelResult<Double>
-        fun subtract(): ModelResult<Double>
-        fun multiply(): ModelResult<Double>
-        fun divide(): ModelResult<Double>
-        fun reset()
-        sealed interface ModelResult<T>
-        data class Success<T>(val value: T) : ModelResult<T>
-        data class Error<T>(val msg: String) : ModelResult<T>
+        fun add(firstInput: String, secondInput: String): Result<Double>
+        fun subtract(firstInput: String, secondInput: String): Result<Double>
+        fun multiply(firstInput: String, secondInput: String): Result<Double>
+        fun divide(firstInput: String, secondInput: String): Result<Double>
     }
 
     interface View {
@@ -21,11 +17,10 @@ interface Contract {
     }
 
     interface Presenter {
-        fun firstNumberChanged(value: Double)
-        fun secondNumberChanged(value: Double)
-        fun onAddClick()
-        fun onSubtractClick()
-        fun onMultiplyClick()
-        fun onDivideClick()
+        fun onAddClick(firstInput: String, secondInput: String)
+        fun onSubtractClick(firstInput: String, secondInput: String)
+        fun onMultiplyClick(firstInput: String, secondInput: String)
+        fun onDivideClick(firstInput: String, secondInput: String)
     }
+
 }
